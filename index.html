@@ -3,72 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exhibit001 — A Digital Museum by S!CK</title>
-  <meta name="description" content="A private archive. A global movement. Launching June 29." />
+  <title>Exhibit001</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; }
-    body {
+    /* Full-screen white room */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #f3f3f3;
-      perspective: 1000px;
-      font-family: 'Courier New', monospace;
-      color: #111;
+      perspective: 800px;
+      font-family: 'Arial', sans-serif;
+      color: #000;
     }
-    .wall {
-      width: 80vw;
-      height: 60vh;
-      background: #fff url('exhibit001-wall.jpg') no-repeat center center;
-      background-size: cover;
-      transform: rotateX(15deg);
-      transform-origin: bottom;
-      box-shadow: 0 20px 30px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .scene {
+      transform-style: preserve-3d;
+      transform: rotateX(12deg);
+      text-align: center;
+    }
+    h1 {
+      font-size: 6vw;
+      margin: 0 0 1.5rem;
+      font-weight: bold;
+      transform: translateZ(50px);
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     }
     .countdown {
-      font-size: 2vw;
-      background: rgba(255,255,255,0.85);
-      padding: 1vh 2vw;
-      border-radius: 1rem;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-      backdrop-filter: blur(4px);
-      text-align: center;
+      font-size: 3vw;
+      transform: translateZ(30px);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
-  <div class="wall">
+  <div class="scene">
+    <h1>Exhibit001</h1>
     <div id="countdown" class="countdown"></div>
   </div>
 
   <script>
-    const countdownEl = document.getElementById('countdown');
-    const launchTime = new Date('2025-06-29T00:00:00Z').getTime();
-
-    function updateCountdown() {
+    const el = document.getElementById('countdown');
+    const target = new Date('2025-06-29T00:00:00Z').getTime();
+    function update() {
       const now = Date.now();
-      const diff = launchTime - now;
-      if (diff < 0) {
-        countdownEl.textContent = '00(days) 00(hours) 00(minutes) 00(seconds)';
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      countdownEl.textContent =
-        String(days).padStart(2, '0') + '(days) ' +
-        String(hours).padStart(2, '0') + '(hours) ' +
-        String(minutes).padStart(2, '0') + '(minutes) ' +
-        String(seconds).padStart(2, '0') + '(seconds)';
+      let diff = target - now;
+      if (diff < 0) diff = 0;
+      const d = String(Math.floor(diff / 86400000)).padStart(2,'0');
+      const h = String(Math.floor((diff % 86400000)/3600000)).padStart(2,'0');
+      const m = String(Math.floor((diff % 3600000)/60000)).padStart(2,'0');
+      const s = String(Math.floor((diff % 60000)/1000)).padStart(2,'0');
+      el.textContent = `${d}(days) ${h}(hours) ${m}(minutes) ${s}(seconds)`;
     }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    setInterval(update, 1000);
+    update();
   </script>
 </body>
 </html>
