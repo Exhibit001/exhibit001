@@ -1,11 +1,52 @@
-import { useEffect, useState } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exhibit001 — A Digital Museum by S!CK</title>
+  <meta name="description" content="A private archive. A global movement. Launching June 29." />
+  <meta name="keywords" content="Exhibit001, digital museum, sick brand, fashion archive, underground launch" />
+  <meta name="author" content="S!CK" />
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(to bottom right, #ffffff, #f3f3f3);
+      font-family: monospace;
+      color: #000;
+      perspective: 1000px;
+    }
+    h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+      transform: scale(1.05);
+    }
+    .countdown {
+      font-size: 2rem;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      border: 1px solid #ccc;
+      transform: rotateX(2deg) rotateY(1deg);
+    }
+  </style>
+</head>
+<body>
+  <h1>Exhibit001</h1>
+  <div class="countdown" id="countdown"></div>
 
-export default function ExhibitLanding() {
-  const launchDate = new Date("2025-06-29T00:00:00Z").getTime();
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  <script>
+    const countdownEl = document.getElementById('countdown');
+    const launchDate = new Date("2025-06-29T00:00:00Z").getTime();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+    function updateCountdown() {
       const now = new Date().getTime();
       const distance = launchDate - now;
 
@@ -14,23 +55,15 @@ export default function ExhibitLanding() {
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      setTimeLeft({ days, hours, minutes, seconds });
-    }, 1000);
+      countdownEl.innerHTML =
+        String(days).padStart(2, '0') + '(days) ' +
+        String(hours).padStart(2, '0') + '(hours) ' +
+        String(minutes).padStart(2, '0') + '(minutes) ' +
+        String(seconds).padStart(2, '0') + '(seconds)';
+    }
 
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-white via-gray-100 to-white text-black font-mono perspective-3d">
-      <div className="text-7xl font-extrabold mb-12 transform scale-105 drop-shadow-[0_10px_15px_rgba(0,0,0,0.1)]" style={{ textShadow: "2px 2px 12px rgba(0,0,0,0.1)" }}>
-        Exhibit001
-      </div>
-      <div className="text-4xl p-6 bg-white/80 border border-gray-300 rounded-2xl shadow-lg backdrop-blur-md transform rotate-x-2 rotate-y-1">
-        {`${String(timeLeft.days).padStart(2, '0')}(days) `}
-        {`${String(timeLeft.hours).padStart(2, '0')}(hours) `}
-        {`${String(timeLeft.minutes).padStart(2, '0')}(minutes) `}
-        {`${String(timeLeft.seconds).padStart(2, '0')}(seconds)`}
-      </div>
-    </div>
-  );
-}
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
