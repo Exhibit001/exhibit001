@@ -5,77 +5,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Exhibit001 — A Digital Museum by S!CK</title>
   <meta name="description" content="A private archive. A global movement. Launching June 29." />
-  <meta name="keywords" content="Exhibit001, digital museum, sick brand, fashion archive, underground launch" />
-  <meta name="author" content="S!CK" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(145deg, #ffffff, #eaeaea);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Courier New', monospace;
-      color: #111;
-      perspective: 1200px;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transform: rotateX(2deg) rotateY(1deg);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      font-size: 5rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
-      margin-bottom: 3rem;
-    }
-    .countdown {
-      font-size: 2.5rem;
-      background: rgba(255, 255, 255, 0.85);
-      padding: 1.5rem 3rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(6px);
-      border: 1px solid #ddd;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { width: 100%; height: 100%; overflow: hidden; }
+    #overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
+    #overlay h1 { font-family: 'Courier New', monospace; font-size: 6rem; color: #111; text-shadow: 4px 4px 20px rgba(0,0,0,0.1); }
+    #overlay .countdown { margin-top: 1.5rem; font-size: 2.5rem; background: rgba(255,255,255,0.9); padding: 1.5rem 3rem; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); backdrop-filter: blur(8px); }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div id="overlay">
     <h1>Exhibit001</h1>
     <div class="countdown" id="countdown"></div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
+    // Three.js scene: white room
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Room geometry (inverted cube)
+    const geometry = new THREE.BoxGeometry(10, 10, 10);
+    const material = new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.BackSide });
+    const room = new THREE.Mesh(geometry, material);
+    scene.add(room);
+
+    // Lighting
+    const ambient = new THREE.AmbientLight(0x888888);
+    scene.add(ambient);
+    const directional = new THREE.DirectionalLight(0xffffff, 1);
+    directional.position.set(5, 10, 7.5);
+    scene.add(directional);
+
+    camera.position.z = 5;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      room.rotation.y += 0.0005;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+  </script>
+
+  <script>
+    // Countdown timer
     const countdownEl = document.getElementById('countdown');
-    const launchDate = new Date("2025-06-29T00:00:00Z").getTime();
-
+    const launchTime = new Date("2025-06-29T00:00:00Z").getTime();
     function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = launchDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownEl.innerHTML =
+      const now = Date.now();
+      const diff = launchTime - now;
+      if (diff < 0) { countdownEl.textContent = "00(days) 00(hours) 00(minutes) 00(seconds)"; return; }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+      countdownEl.textContent =
         String(days).padStart(2, '0') + '(days) ' +
         String(hours).padStart(2, '0') + '(hours) ' +
-        String(minutes).padStart(2, '0') + '(minutes) ' +
-        String(seconds).padStart(2, '0') + '(seconds)';
+        String(mins).padStart(2, '0') + '(minutes) ' +
+        String(secs).padStart(2, '0') + '(seconds)';
     }
-
     setInterval(updateCountdown, 1000);
     updateCountdown();
   </script>
