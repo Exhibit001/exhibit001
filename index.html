@@ -7,10 +7,32 @@
   <meta name="description" content="A private archive. A global movement. Launching June 29." />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { width: 100%; height: 100%; overflow: hidden; }
-    #overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
-    #overlay h1 { font-family: 'Courier New', monospace; font-size: 6rem; color: #111; text-shadow: 4px 4px 20px rgba(0,0,0,0.1); }
-    #overlay .countdown { margin-top: 1.5rem; font-size: 2.5rem; background: rgba(255,255,255,0.9); padding: 1.5rem 3rem; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); backdrop-filter: blur(8px); }
+    html, body { width: 100%; height: 100%; overflow: hidden; }
+    body { background: #f3f3f3; font-family: 'Courier New', monospace; perspective: 1500px; }
+    #overlay {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform-style: preserve-3d;
+      transform: translate(-50%, -50%) translateZ(-200px) scale(0.7);
+      text-align: center;
+      pointer-events: none;
+      color: #111;
+    }
+    #overlay h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      text-shadow: 3px 3px 15px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+    #overlay .countdown {
+      font-size: 1.5rem;
+      background: rgba(255,255,255,0.85);
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid #ddd;
+    }
   </style>
 </head>
 <body>
@@ -50,7 +72,6 @@
     }
     animate();
 
-    // Handle resize
     window.addEventListener('resize', () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
       camera.aspect = window.innerWidth/window.innerHeight;
@@ -65,7 +86,10 @@
     function updateCountdown() {
       const now = Date.now();
       const diff = launchTime - now;
-      if (diff < 0) { countdownEl.textContent = "00(days) 00(hours) 00(minutes) 00(seconds)"; return; }
+      if (diff < 0) {
+        countdownEl.textContent = "00(days) 00(hours) 00(minutes) 00(seconds)";
+        return;
+      }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
