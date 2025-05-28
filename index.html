@@ -8,39 +8,53 @@
   <meta name="keywords" content="Exhibit001, digital museum, sick brand, fashion archive, underground launch" />
   <meta name="author" content="S!CK" />
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      width: 100vw;
       height: 100vh;
+      background: linear-gradient(145deg, #ffffff, #eaeaea);
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: 'Courier New', monospace;
+      color: #111;
+      perspective: 1200px;
+    }
+    .container {
+      display: flex;
       flex-direction: column;
-      background: linear-gradient(to bottom right, #ffffff, #f3f3f3);
-      font-family: monospace;
-      color: #000;
-      perspective: 1000px;
+      align-items: center;
+      text-align: center;
+      transform: rotateX(2deg) rotateY(1deg);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
     }
     h1 {
-      font-size: 4rem;
+      font-size: 5rem;
       font-weight: 900;
-      margin-bottom: 2rem;
-      text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
-      transform: scale(1.05);
+      letter-spacing: 2px;
+      text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 3rem;
     }
     .countdown {
-      font-size: 2rem;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 1rem 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-      border: 1px solid #ccc;
-      transform: rotateX(2deg) rotateY(1deg);
+      font-size: 2.5rem;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 1.5rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid #ddd;
     }
   </style>
 </head>
 <body>
-  <h1>Exhibit001</h1>
-  <div class="countdown" id="countdown"></div>
+  <div class="container">
+    <h1>Exhibit001</h1>
+    <div class="countdown" id="countdown"></div>
+  </div>
 
   <script>
     const countdownEl = document.getElementById('countdown');
