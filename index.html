@@ -1,99 +1,92 @@
-// src/ExhibitLanding.jsx
-import React, { useEffect, useState } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exhibit001 — A Digital Museum by S!CK</title>
+  <meta name="description" content="A private archive. A global movement. Launching June 29." />
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-export default function ExhibitLanding() {
-  // Countdown logic
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  useEffect(() => {
-    const launch = new Date('2025-06-29T00:00:00Z').getTime();
-    const interval = setInterval(() => {
+    /* Base styles */
+    html, body { width: 100%; height: 100%; overflow: hidden; }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f3f3f3;
+      perspective: 1000px;
+      font-family: 'Courier New', monospace;
+      color: #111;
+    }
+
+    /* Simulated back wall */
+    .wall {
+      width: 70vw;
+      height: 50vh;
+      background: #fff;
+      transform: rotateX(15deg);
+      transform-origin: bottom;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Title styling */
+    .wall h1 {
+      font-size: 4vw;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 1.5vh;
+    }
+
+    /* Countdown panel */
+    .countdown {
+      font-size: 2vw;
+      background: rgba(255,255,255,0.85);
+      padding: 1vh 2vw;
+      border-radius: 1rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      backdrop-filter: blur(4px);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wall">
+    <h1>Exhibit001</h1>
+    <div id="countdown" class="countdown"></div>
+  </div>
+
+  <script>
+    // Countdown logic
+    const countdownEl = document.getElementById('countdown');
+    const launchTime = new Date('2025-06-29T00:00:00Z').getTime();
+
+    function updateCountdown() {
       const now = Date.now();
-      const diff = launch - now;
+      const diff = launchTime - now;
+      if (diff < 0) {
+        countdownEl.textContent = '00(days) 00(hours) 00(minutes) 00(seconds)';
+        return;
+      }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      setTimeLeft({ days, hours, minutes, seconds });
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
-  return (
-    <div
-      style={{
-        width: '100vw',
-        height: '100vh',
-        background: '#f3f3f3',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        perspective: '800px',
-      }}
-    >
-      <div
-        style={{
-          width: '80vw',
-          height: '60vh',
-          background: '#fff',
-          transform: 'rotateX(15deg)',
-          transformOrigin: 'bottom',
-          boxShadow: '0 15px 30px rgba(0,0,0,0.1)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <h1
-          style={{
-            fontSize: '4rem',
-            fontWeight: 900,
-            margin: 0,
-            color: '#111',
-            textShadow: '2px 2px 10px rgba(0,0,0,0.1)',
-          }}
-        >
-          Exhibit001
-        </h1>
-        <div
-          style={{
-            marginTop: '1.5rem',
-            fontSize: '2rem',
-            background: 'rgba(255,255,255,0.85)',
-            padding: '1rem 2rem',
-            borderRadius: '12px',
-            boxShadow: '0 8px 16px rgba(0,0,0,0.08)',
-          }}
-        >
-          {String(timeLeft.days).padStart(2, '0')}(days){' '}
-          {String(timeLeft.hours).padStart(2, '0')}(hours){' '}
-          {String(timeLeft.minutes).padStart(2, '0')}(minutes){' '}
-          {String(timeLeft.seconds).padStart(2, '0')}(seconds)
-        </div>
-      </div>
-    </div>
-  );
-}
+      countdownEl.textContent =
+        String(days).padStart(2, '0') + '(days) ' +
+        String(hours).padStart(2, '0') + '(hours) ' +
+        String(minutes).padStart(2, '0') + '(minutes) ' +
+        String(seconds).padStart(2, '0') + '(seconds)';
+    }
 
-// src/App.js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ExhibitLanding from './ExhibitLanding';
-
-function App() {
-  return <ExhibitLanding />;
-}
-
-export default App;
-
-// src/index.js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
