@@ -1,66 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exhibit001</title>
-  <style>
-    body {
-      margin: 0;
-      background: white;
-      font-family: 'Helvetica Neue', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
-      color: #000;
-      perspective: 1000px;
-    }
+import { useEffect, useState } from "react";
 
-    .wall-text {
-      font-size: 4rem;
-      font-weight: 800;
-      transform: rotateX(10deg) rotateY(0deg);
-      text-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin: 0;
-    }
+export default function ExhibitLanding() {
+  const launchDate = new Date("2025-06-29T00:00:00Z").getTime();
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-    .countdown {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      transform: rotateX(10deg);
-    }
-  </style>
-</head>
-<body>
-  <div class="countdown" id="countdown"></div>
-  <h1 class="wall-text">Exhibit001</h1>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
 
-  <script>
-    const countdownElement = document.getElementById("countdown");
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    const launchDate = new Date("2025-06-29T00:00:00Z");
-    function updateCountdown() {
-      const now = new Date();
-      const diff = launchDate - now;
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
 
-      if (diff <= 0) {
-        countdownElement.textContent = "00(days) 00(hours) 00(minutes) 00(seconds)";
-        return;
-      }
+    return () => clearInterval(interval);
+  }, []);
 
-      const days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-      const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
-      const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
-      const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
-
-      countdownElement.textContent = `${days}(days) ${hours}(hours) ${minutes}(minutes) ${seconds}(seconds)`;
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
-</body>
-</html>
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-white via-gray-100 to-white text-black font-mono perspective-3d">
+      <div className="text-7xl font-extrabold mb-12 transform scale-105 drop-shadow-[0_10px_15px_rgba(0,0,0,0.1)]" style={{ textShadow: "2px 2px 12px rgba(0,0,0,0.1)" }}>
+        Exhibit001
+      </div>
+      <div className="text-4xl p-6 bg-white/80 border border-gray-300 rounded-2xl shadow-lg backdrop-blur-md transform rotate-x-2 rotate-y-1">
+        {`${String(timeLeft.days).padStart(2, '0')}(days) `}
+        {`${String(timeLeft.hours).padStart(2, '0')}(hours) `}
+        {`${String(timeLeft.minutes).padStart(2, '0')}(minutes) `}
+        {`${String(timeLeft.seconds).padStart(2, '0')}(seconds)`}
+      </div>
+    </div>
+  );
+}
