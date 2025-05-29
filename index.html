@@ -36,21 +36,11 @@
     .count-group {
       transform: translateZ(30px);
     }
-    .total-days {
-      font-size: 5vw;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      text-shadow: 1px 1px 2px #444;
-    }
-    .weeks-days {
-      font-size: 3vw;
-      margin-bottom: 2rem;
-      text-shadow: 1px 1px 2px #333;
-    }
-    .hhmmss {
+    .total-days, .weeks-days, .hhmmss {
       font-size: 7vw;
       font-weight: 900;
       letter-spacing: 3px;
+      margin-bottom: 1.5rem;
       text-shadow:
         2px 2px 0 #444,
         4px 4px 0 #222;
@@ -86,8 +76,8 @@
       const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
       const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
 
-      elDays.textContent = `${totalDays} days`;
-      elWeeks.textContent = `${weeks} weeks ${daysLeft} days`;
+      elDays.textContent = `${totalDays} DAYS`;
+      elWeeks.textContent = `${weeks} WEEKS ${daysLeft} DAYS`;
       elTime.textContent = `${hours}:${minutes}:${seconds}`;
     }
 
