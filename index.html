@@ -7,40 +7,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #1e1e1e; /* dark ash grey */
+      color: #fff;
+      font-family: 'Work Sans', sans-serif;
+    }
     body {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #fff;
-      perspective: 800px;
-      font-family: 'Work Sans', sans-serif;
-      color: #000;
+      perspective: 600px;
     }
     .scene {
       text-align: center;
       transform-style: preserve-3d;
-      transform: rotateX(12deg);
+      transform: rotateX(6deg);
     }
     .hero-image {
       width: 60vw;
       max-width: 700px;
       height: auto;
-      transform: translateZ(80px);
+      transform: translateZ(40px);
       margin-bottom: 3rem;
+      filter: brightness(100%) contrast(100%);
     }
-   .countdown {
-  font-size: 4vw;
-  font-weight: 900;
-  color: #000;
-  transform: translateZ(60px);
-  text-shadow:
-    2px 2px 0 #ccc,
-    4px 4px 0 #bbb,
-    6px 6px 0 #aaa,
-    8px 8px 0 #999;
-  letter-spacing: 2px;
-}
+    .countdown {
+      font-size: 6vw;
+      font-weight: 900;
+      color: #fff;
+      transform: translateZ(30px);
+      text-shadow:
+        2px 2px 0 #444,
+        4px 4px 0 #222;
+      letter-spacing: 3px;
+    }
   </style>
 </head>
 <body>
