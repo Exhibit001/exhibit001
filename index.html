@@ -10,10 +10,10 @@
     html, body {
       width: 100%;
       height: 100%;
-      overflow: hidden;
       background: #1e1e1e; /* dark ash grey */
       color: #fff;
       font-family: 'Work Sans', sans-serif;
+      overflow: hidden;
     }
     body {
       display: flex;
@@ -31,40 +31,66 @@
       max-width: 700px;
       height: auto;
       transform: translateZ(40px);
-      margin-bottom: 3rem;
-      filter: brightness(100%) contrast(100%);
+      margin-bottom: 2rem;
     }
-    .countdown {
-      font-size: 6vw;
-      font-weight: 900;
-      color: #fff;
+    .count-group {
       transform: translateZ(30px);
+    }
+    .total-days {
+      font-size: 5vw;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 2px #444;
+    }
+    .weeks-days {
+      font-size: 3vw;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 2px #333;
+    }
+    .hhmmss {
+      font-size: 7vw;
+      font-weight: 900;
+      letter-spacing: 3px;
       text-shadow:
         2px 2px 0 #444,
         4px 4px 0 #222;
-      letter-spacing: 3px;
     }
   </style>
 </head>
 <body>
   <div class="scene">
     <img src="exhibit001-title.png" alt="Exhibit001" class="hero-image">
-    <div id="countdown" class="countdown"></div>
+    <div class="count-group">
+      <div id="total-days" class="total-days"></div>
+      <div id="weeks-days" class="weeks-days"></div>
+      <div id="hhmmss" class="hhmmss"></div>
+    </div>
   </div>
 
   <script>
-    const el = document.getElementById('countdown');
+    const elDays = document.getElementById('total-days');
+    const elWeeks = document.getElementById('weeks-days');
+    const elTime = document.getElementById('hhmmss');
+
     const target = new Date('2025-06-29T00:00:00Z').getTime();
+
     function update() {
       const now = Date.now();
       let diff = target - now;
       if (diff < 0) diff = 0;
-      const d = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-      const h = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-      const m = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-      const s = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-      el.textContent = `${d}(days) ${h}(hours) ${m}(minutes) ${s}(seconds)`;
+
+      const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const weeks = Math.floor(totalDays / 7);
+      const daysLeft = totalDays % 7;
+      const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+      const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+
+      elDays.textContent = `${totalDays} days`;
+      elWeeks.textContent = `${weeks} weeks ${daysLeft} days`;
+      elTime.textContent = `${hours}:${minutes}:${seconds}`;
     }
+
     setInterval(update, 1000);
     update();
   </script>
