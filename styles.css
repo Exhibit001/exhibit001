@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  background-color: #000;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px white, 0 0 20px white;
+  margin-bottom: 50px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button {
+  text-decoration: none;
+  padding: 20px 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 10px white;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px white, 0 0 40px white;
+}
+
+/* Glowing color variants */
+.pink {
+  background: #ff00cc;
+  box-shadow: 0 0 10px #ff00cc, 0 0 30px #ff00cc;
+}
+
+.yellow {
+  background: #ffff33;
+  box-shadow: 0 0 10px #ffff33, 0 0 30px #ffff33;
+}
+
+.green {
+  background: #00ff99;
+  box-shadow: 0 0 10px #00ff99, 0 0 30px #00ff99;
+}
+
+.blue {
+  background: #00ccff;
+  box-shadow: 0 0 10px #00ccff, 0 0 30px #00ccff;
+}
+
+.red {
+  background: #ff3300;
+  box-shadow: 0 0 10px #ff3300, 0 0 30px #ff3300;
+}
