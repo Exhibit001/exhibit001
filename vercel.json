@@ -1,13 +1,1 @@
-{
-  "redirects": [
-    { "source": "/", "has": [{ "type": "host", "value": "www.exhibit001.com" }], "destination": "https://exhibit001.com/", "permanent": true },
-    { "source": "/", "has": [{ "type": "host", "value": "exhibit001.fashion" }], "destination": "https://exhibit001.com/", "permanent": true },
-    { "source": "/", "has": [{ "type": "host", "value": "exhibit001.gallery" }], "destination": "https://exhibit001.com/", "permanent": true },
-    { "source": "/", "has": [{ "type": "host", "value": "exhibit001.london" }], "destination": "https://exhibit001.com/", "permanent": true },
-    { "source": "/", "has": [{ "type": "host", "value": "exhibit001.africa" }], "destination": "https://exhibit001.com/", "permanent": true },
-    { "source": "/", "has": [{ "type": "host", "value": "exhibit001.work" }], "destination": "https://exhibit001.com/", "permanent": true },
-    { "source": "/", "has": [{ "type": "host", "value": "exhibit001.photos" }], "destination": "https://exhibit001.com/", "permanent": true },
-    { "source": "/", "has": [{ "type": "host", "value": "exhibit001.ws" }], "destination": "https://exhibit001.com/", "permanent": true },
-    { "source": "/", "has": [{ "type": "host", "value": "exhibit001.it.com" }], "destination": "https://exhibit001.com/", "permanent": true }
-  ]
-}
+
