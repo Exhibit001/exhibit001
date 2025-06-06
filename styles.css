@@ -1,10 +1,9 @@
-/* force redeploy */
 body {
   margin: 0;
   padding: 0;
-  background: #000;
-  font-family: 'Arial Black', sans-serif;
-  color: white;
+  background: #2a1f1a;
+  font-family: 'Arial', sans-serif;
+  color: #fdfaf6;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,56 +12,53 @@ body {
 }
 
 .title {
-  font-size: 4.5rem;
-  font-weight: bold;
-  margin-bottom: 50px;
-  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 40px white;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: #fdfaf6;
 }
 
 .buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 20px;
 }
 
 .btn {
   text-decoration: none;
-  padding: 20px 40px;
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: white;
-  border-radius: 20px;
-  box-shadow: 0 0 20px white;
-  transition: all 0.25s ease;
+  padding: 18px 36px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #2a1f1a;
 }
 
-.btn:hover {
-  transform: scale(1.1);
+/* Earthy color blocks */
+.brown {
+  background: #a1887f;
 }
 
-/* Color glows */
-.pink {
-  background: #ff00cc;
-  box-shadow: 0 0 15px #ff00cc, 0 0 30px #ff00cc;
-}
-
-.yellow {
-  background: #ffff33;
-  box-shadow: 0 0 15px #ffff33, 0 0 30px #ffff33;
+.dark-brown {
+  background: #4e342e;
+  color: #fdfaf6;
 }
 
 .green {
-  background: #00ff99;
-  box-shadow: 0 0 15px #00ff99, 0 0 30px #00ff99;
+  background: #2e7d32;
+  color: #fdfaf6;
 }
 
-.blue {
-  background: #00ccff;
-  box-shadow: 0 0 15px #00ccff, 0 0 30px #00ccff;
+.tan {
+  background: #d7ccc8;
 }
 
-.red {
-  background: #ff3300;
-  box-shadow: 0 0 15px #ff3300, 0 0 30px #ff3300;
+.cream {
+  background: #f5f5dc;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
