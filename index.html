@@ -2,87 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exhibit001</title>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EXHIBIT001</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 100%;
-      height: 100%;
-      background: #1e1e1e; /* dark ash grey */
-      color: #fff;
-      font-family: 'Work Sans', sans-serif;
-      overflow: hidden;
-    }
     body {
+      margin: 0;
+      background-color: #000;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      perspective: 600px;
+      justify-content: center;
+      height: 100vh;
+      gap: 20px;
+      font-family: Arial, sans-serif;
     }
-    .scene {
-      text-align: center;
-      transform-style: preserve-3d;
-      transform: rotateX(6deg);
+    .button {
+      padding: 20px 40px;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
     }
-    .hero-image {
-      width: 60vw;
-      max-width: 700px;
-      height: auto;
-      transform: translateZ(40px);
-      margin-bottom: 2rem;
-    }
-    .count-group {
-      transform: translateZ(30px);
-    }
-    .total-days, .weeks-days, .hhmmss {
-      font-size: 7vw;
-      font-weight: 900;
-      letter-spacing: 3px;
-      margin-bottom: 1.5rem;
-      text-shadow:
-        2px 2px 0 #444,
-        4px 4px 0 #222;
-    }
+    .video { background-color: #ff4d4d; }
+    .photos { background-color: #4d94ff; }
+    .gallery { background-color: #4dff88; }
+    .fashion { background-color: #ffdb4d; color: #000; }
   </style>
 </head>
 <body>
-  <div class="scene">
-    <img src="exhibit001-title.png" alt="Exhibit001" class="hero-image">
-    <div class="count-group">
-      <div id="total-days" class="total-days"></div>
-      <div id="weeks-days" class="weeks-days"></div>
-      <div id="hhmmss" class="hhmmss"></div>
-    </div>
-  </div>
-
-  <script>
-    const elDays = document.getElementById('total-days');
-    const elWeeks = document.getElementById('weeks-days');
-    const elTime = document.getElementById('hhmmss');
-
-    const target = new Date('2025-06-29T00:00:00Z').getTime();
-
-    function update() {
-      const now = Date.now();
-      let diff = target - now;
-      if (diff < 0) diff = 0;
-
-      const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const weeks = Math.floor(totalDays / 7);
-      const daysLeft = totalDays % 7;
-      const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-      const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-      const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-
-      elDays.textContent = `${totalDays} DAYS`;
-      elWeeks.textContent = `${weeks} WEEKS ${daysLeft} DAYS`;
-      elTime.textContent = `${hours}:${minutes}:${seconds}`;
-    }
-
-    setInterval(update, 1000);
-    update();
-  </script>
+  <a href="https://exhibit001.video" class="button video">VIDEO</a>
+  <a href="https://exhibit001.photos" class="button photos">PHOTOS</a>
+  <a href="https://exhibit001.gallery" class="button gallery">GALLERY</a>
+  <a href="https://exhibit001.fashion" class="button fashion">FASHION</a>
 </body>
 </html>
