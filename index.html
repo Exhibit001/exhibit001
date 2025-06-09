@@ -2,69 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Exhibit001 – Digital Fashion Archive</title>
-  <meta name="description" content="Exhibit001 is a mysterious digital archive of handmade fashion, photos, and media.">
-  <meta name="keywords" content="Exhibit001, fashion archive, gallery, photos, video, handmade, art">
-  <meta name="author" content="Jayden Wynns" />
-
-  <!-- Social -->
-  <meta property="og:title" content="Exhibit001" />
-  <meta property="og:description" content="A digital archive of handmade fashion and visuals." />
-  <meta property="og:image" content="https://exhibit001.com/cover.jpg" />
-  <meta property="og:url" content="https://exhibit001.com" />
-  <meta name="twitter:card" content="summary_large_image" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exhibit001</title>
   <style>
     body {
       margin: 0;
-      background: #2b1b17;
-      overflow: hidden;
-    }
-    .wrapper {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
+      padding: 40px 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
     }
-    .background-image {
-      position: absolute;
-      max-height: 90vh;
-      z-index: 1;
+
+    .header {
+      background-color: red;
+      padding: 10px 30px;
+      border-radius: 999px;
+      font-size: 40px;
+      font-weight: bold;
+      color: black;
     }
-    .hotspot {
-      position: absolute;
+
+    .code-row {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .circle {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      text-indent: -9999px;
-      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: black;
     }
-    /* Circle click zones */
-    .video { top: 11%; left: 47%; }
-    .gallery { top: 26.5%; left: 69%; }
-    .photos { top: 58%; left: 65%; }
-    .fashion { top: 70%; left: 47%; }
-    .work { top: 58%; left: 28%; }
-    .ws { top: 26.5%; left: 22.5%; }
+
+    .green { background-color: #3f7f00; }
+    .brown { background-color: #5a3a00; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      background-color: #fdf1c7;
+      color: black;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 20px;
+      text-align: center;
+      border: 4px solid black;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #ffeaa0;
+    }
   </style>
 </head>
-
 <body>
-  <h1 style="position: absolute; left: -9999px;">Exhibit001 – Handmade Fashion Archive</h1>
 
-  <div class="wrapper">
-    <img src="exhibit001-layout.png" alt="Exhibit001 Site Layout" class="background-image">
+  <div class="header">Exhibit</div>
 
-    <a href="https://exhibit001.video" class="hotspot video">Video</a>
-    <a href="https://exhibit001.gallery" class="hotspot gallery">Gallery</a>
-    <a href="https://exhibit001.photos" class="hotspot photos">Photos</a>
-    <a href="https://exhibit001.fashion" class="hotspot fashion">Fashion</a>
-    <a href="https://exhibit001.work" class="hotspot work">Work</a>
-    <a href="https://exhibit001.ws" class="hotspot ws">W.S</a>
+  <div class="code-row">
+    <div class="circle green">0</div>
+    <div class="circle brown">0</div>
+    <div class="circle green">1</div>
   </div>
+
+  <div class="grid">
+    <a href="https://exhibit001.video" class="btn" target="_blank">Video</a>
+    <a href="https://exhibit001.gallery" class="btn" target="_blank">Gallery</a>
+    <a href="https://exhibit001.photos" class="btn" target="_blank">Photo</a>
+    <a href="https://exhibit001.fashion" class="btn" target="_blank">Fashion</a>
+    <a href="https://exhibit001.work" class="btn" target="_blank">Work</a>
+    <a href="https://exhibit001.ws" class="btn" target="_blank">W.S</a>
+  </div>
+
 </body>
 </html>
