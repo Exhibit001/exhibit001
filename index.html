@@ -1,20 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EXHIBIT001</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exhibit001</title>
+  <style>
+    body {
+      margin: 0;
+      background: #3b2f2f;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .ring {
+      position: relative;
+      width: 90vmin;
+      height: 90vmin;
+      background: #3b2f2f;
+      border: 20px solid #3d2c1d;
+      border-radius: 50%;
+    }
+
+    .tick {
+      position: absolute;
+      width: 6px;
+      height: 20px;
+      background: #000;
+      left: 50%;
+      top: 0;
+      transform-origin: bottom center;
+    }
+
+    .dot {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-align: center;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .center-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: red;
+      color: black;
+      padding: 20px 40px;
+      font-size: 2rem;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      border-radius: 50% / 30%;
+      text-align: center;
+    }
+
+    .center-label span {
+      display: block;
+      font-size: 3rem;
+      margin-top: 10px;
+      letter-spacing: 20px;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="title">EXHIBIT001</h1>
-    <div class="buttons">
-   <a href="https://exhibit001.video" class="btn brown">VIDEO</a>
-<a href="https://exhibit001.photos" class="btn green">PHOTOS</a>
-<a href="https://exhibit001.gallery" class="btn cream">GALLERY</a>
-<a href="https://exhibit001.fashion" class="btn dark-brown">FASHION</a>
-    </div>
+  <div class="ring">
+    <div class="center-label">Exhibit<span>001</span></div>
+    <!-- Tick marks -->
+    <div class="tick" style="transform: rotate(0deg) translateY(-50%);"></div>
+    <div class="tick" style="transform: rotate(60deg) translateY(-50%);"></div>
+    <div class="tick" style="transform: rotate(120deg) translateY(-50%);"></div>
+    <div class="tick" style="transform: rotate(180deg) translateY(-50%);"></div>
+    <div class="tick" style="transform: rotate(240deg) translateY(-50%);"></div>
+    <div class="tick" style="transform: rotate(300deg) translateY(-50%);"></div>
+
+    <!-- Colored clickable circles -->
+    <a href="https://exhibit001.video" class="dot" style="background: blue; top: 5%; left: 50%; transform: translate(-50%, 0);">Video</a>
+    <a href="https://exhibit001.gallery" class="dot" style="background: orange; top: 25%; left: 85%; transform: translate(-50%, -50%);">Gallery</a>
+    <a href="https://exhibit001.photos" class="dot" style="background: gray; top: 70%; left: 80%; transform: translate(-50%, -50%);">Photos</a>
+    <a href="https://exhibit001.fashion" class="dot" style="background: yellow; top: 90%; left: 50%; transform: translate(-50%, -100%);">Fashion</a>
+    <a href="https://exhibit001.work" class="dot" style="background: pink; top: 70%; left: 20%; transform: translate(-50%, -50%);">Work</a>
+    <a href="https://exhibit001.ws" class="dot" style="background: green; top: 25%; left: 15%; transform: translate(-50%, -50%);">W.S</a>
   </div>
 </body>
 </html>
