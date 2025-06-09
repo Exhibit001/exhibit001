@@ -7,90 +7,49 @@
   <style>
     body {
       margin: 0;
-      background: #3b2f2f;
+      background: #2b1b17;
+      overflow: hidden;
+    }
+    .wrapper {
+      position: relative;
+      width: 100vw;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
     }
-
-    .ring {
-      position: relative;
-      width: 90vmin;
-      height: 90vmin;
-      background: #3b2f2f;
-      border: 20px solid #3d2c1d;
+    .background-image {
+      position: absolute;
+      width: auto;
+      height: 90vh;
+      z-index: 1;
+    }
+    .hotspot {
+      position: absolute;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
+      z-index: 2;
+      text-indent: -9999px;
     }
-
-    .tick {
-      position: absolute;
-      width: 6px;
-      height: 20px;
-      background: #000;
-      left: 50%;
-      top: 0;
-      transform-origin: bottom center;
-    }
-
-    .dot {
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      font-size: 0.9rem;
-      text-align: center;
-      text-decoration: none;
-      color: #000;
-    }
-
-    .center-label {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: red;
-      color: black;
-      padding: 20px 40px;
-      font-size: 2rem;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      border-radius: 50% / 30%;
-      text-align: center;
-    }
-
-    .center-label span {
-      display: block;
-      font-size: 3rem;
-      margin-top: 10px;
-      letter-spacing: 20px;
-    }
+    /* Position clickable areas manually */
+    .video { top: 12%; left: 46.5%; }
+    .gallery { top: 28%; left: 69%; }
+    .photos { top: 58%; left: 65.5%; }
+    .fashion { top: 70%; left: 46.5%; }
+    .work { top: 58%; left: 27.5%; }
+    .ws { top: 28%; left: 23.5%; }
   </style>
 </head>
 <body>
-  <div class="ring">
-    <div class="center-label">Exhibit<span>001</span></div>
-    <!-- Tick marks -->
-    <div class="tick" style="transform: rotate(0deg) translateY(-50%);"></div>
-    <div class="tick" style="transform: rotate(60deg) translateY(-50%);"></div>
-    <div class="tick" style="transform: rotate(120deg) translateY(-50%);"></div>
-    <div class="tick" style="transform: rotate(180deg) translateY(-50%);"></div>
-    <div class="tick" style="transform: rotate(240deg) translateY(-50%);"></div>
-    <div class="tick" style="transform: rotate(300deg) translateY(-50%);"></div>
-
-    <!-- Colored clickable circles -->
-    <a href="https://exhibit001.video" class="dot" style="background: blue; top: 5%; left: 50%; transform: translate(-50%, 0);">Video</a>
-    <a href="https://exhibit001.gallery" class="dot" style="background: orange; top: 25%; left: 85%; transform: translate(-50%, -50%);">Gallery</a>
-    <a href="https://exhibit001.photos" class="dot" style="background: gray; top: 70%; left: 80%; transform: translate(-50%, -50%);">Photos</a>
-    <a href="https://exhibit001.fashion" class="dot" style="background: yellow; top: 90%; left: 50%; transform: translate(-50%, -100%);">Fashion</a>
-    <a href="https://exhibit001.work" class="dot" style="background: pink; top: 70%; left: 20%; transform: translate(-50%, -50%);">Work</a>
-    <a href="https://exhibit001.ws" class="dot" style="background: green; top: 25%; left: 15%; transform: translate(-50%, -50%);">W.S</a>
+  <div class="wrapper">
+    <img src="Screenshot_2025-06-09_11.24.21_AM-removebg-preview (1).png" alt="Exhibit001 layout" class="background-image">
+    <a href="https://exhibit001.video" class="hotspot video">Video</a>
+    <a href="https://exhibit001.gallery" class="hotspot gallery">Gallery</a>
+    <a href="https://exhibit001.photos" class="hotspot photos">Photos</a>
+    <a href="https://exhibit001.fashion" class="hotspot fashion">Fashion</a>
+    <a href="https://exhibit001.work" class="hotspot work">Work</a>
+    <a href="https://exhibit001.ws" class="hotspot ws">W.S</a>
   </div>
 </body>
 </html>
