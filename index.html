@@ -24,25 +24,13 @@
       align-items: center;
     }
 
-    .exhibit-oval {
-      background-color: red;
-      color: black;
-      padding: 15px 60px;
-      font-size: 52px;
-      font-weight: bold;
-      border-radius: 50% / 100%;
-      transform: scale(1.6, 1.1);
-      z-index: 1;
-      position: relative;
-    }
-
     .circle-row {
       display: flex;
       gap: 0px;
       justify-content: center;
-      margin-top: -60px;
       z-index: 2;
       position: relative;
+      margin-bottom: -50px; /* pulls circles down over oval */
     }
 
     .circle {
@@ -60,6 +48,18 @@
 
     .green { background-color: #4A7400; }
     .brown { background-color: #5A3A00; }
+
+    .exhibit-oval {
+      background-color: red;
+      color: black;
+      padding: 15px 60px;
+      font-size: 52px;
+      font-weight: bold;
+      border-radius: 50% / 100%;
+      transform: scale(1.6, 1.1);
+      position: relative;
+      z-index: 1;
+    }
 
     .grid {
       display: grid;
