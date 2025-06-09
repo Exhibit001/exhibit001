@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exhibit001</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Exhibit001 – Digital Fashion Archive</title>
+  <meta name="description" content="Exhibit001 is a mysterious digital archive of handmade fashion, photos, and media.">
+  <meta name="keywords" content="Exhibit001, fashion archive, gallery, photos, video, handmade, art">
+  <meta name="author" content="Jayden Wynns" />
+
+  <!-- Social -->
+  <meta property="og:title" content="Exhibit001" />
+  <meta property="og:description" content="A digital archive of handmade fashion and visuals." />
+  <meta property="og:image" content="https://exhibit001.com/cover.jpg" />
+  <meta property="og:url" content="https://exhibit001.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <style>
     body {
       margin: 0;
@@ -20,8 +32,7 @@
     }
     .background-image {
       position: absolute;
-      width: auto;
-      height: 90vh;
+      max-height: 90vh;
       z-index: 1;
     }
     .hotspot {
@@ -29,21 +40,25 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      z-index: 2;
       text-indent: -9999px;
+      z-index: 2;
     }
-    /* Position clickable areas manually */
-    .video { top: 12%; left: 46.5%; }
-    .gallery { top: 28%; left: 69%; }
-    .photos { top: 58%; left: 65.5%; }
-    .fashion { top: 70%; left: 46.5%; }
-    .work { top: 58%; left: 27.5%; }
-    .ws { top: 28%; left: 23.5%; }
+    /* Circle click zones */
+    .video { top: 11%; left: 47%; }
+    .gallery { top: 26.5%; left: 69%; }
+    .photos { top: 58%; left: 65%; }
+    .fashion { top: 70%; left: 47%; }
+    .work { top: 58%; left: 28%; }
+    .ws { top: 26.5%; left: 22.5%; }
   </style>
 </head>
+
 <body>
+  <h1 style="position: absolute; left: -9999px;">Exhibit001 – Handmade Fashion Archive</h1>
+
   <div class="wrapper">
-    <img src="Screenshot_2025-06-09_11.24.21_AM-removebg-preview (1).png" alt="Exhibit001 layout" class="background-image">
+    <img src="exhibit001-layout.png" alt="Exhibit001 Site Layout" class="background-image">
+
     <a href="https://exhibit001.video" class="hotspot video">Video</a>
     <a href="https://exhibit001.gallery" class="hotspot gallery">Gallery</a>
     <a href="https://exhibit001.photos" class="hotspot photos">Photos</a>
