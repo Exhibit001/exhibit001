@@ -14,39 +14,43 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 50px;
+      padding: 40px 10px;
     }
 
     .exhibit-oval {
       background-color: red;
       color: black;
-      padding: 20px 60px;
-      font-size: 52px;
+      padding: 15px 50px;
+      font-size: 9vw;
       font-weight: bold;
       border-radius: 50% / 100%;
       transform: scaleX(1.5);
       margin-bottom: 20px;
+      text-align: center;
     }
 
     .circle-row {
       display: flex;
-      gap: 0;
+      gap: 6px;
       justify-content: center;
       margin-top: -10px;
+      flex-wrap: nowrap;
     }
 
     .circle {
-      width: 110px;
-      height: 110px;
+      width: 22vw;
+      height: 22vw;
+      max-width: 110px;
+      max-height: 110px;
       border-radius: 50%;
-      font-size: 52px;
+      font-size: 8vw;
+      max-font-size: 52px;
       font-weight: bold;
       display: flex;
       align-items: center;
       justify-content: center;
       color: black;
       border: 4px solid black;
-      margin: 0 4px;
     }
 
     .green { background-color: #4A7400; }
@@ -54,27 +58,36 @@
 
     .grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: 1fr;
+      gap: 18px;
       margin-top: 40px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    @media (min-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     .btn {
       background-color: black;
       color: #fdf1c7;
-      font-size: 28px;
+      font-size: 5vw;
       font-weight: bold;
-      padding: 18px 36px;
+      padding: 16px;
       border-radius: 25px;
       text-decoration: none;
       position: relative;
-      border: 6px solid #fdf1c7;
+      border: 5px solid #fdf1c7;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 90px;
-      width: 220px;
+      height: 80px;
+      width: 100%;
       text-align: center;
+      box-sizing: border-box;
     }
 
     .btn::before {
