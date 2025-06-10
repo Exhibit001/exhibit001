@@ -2,6 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exhibit001 - Main Site</title>
+  <style>
+    /* Reset and full-page setup */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Hide scrollbars initially */
+      font-family: Arial, sans-serif;
+    }
+    /* General container for each phase */
+    .screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* The initial click screen with black background */
+    #clickScreen {
+      background-color: black;
+      color: white;
+    }
+    /* The video screen (hidden at first) */
+    #videoScreen {
+      background-color: black;
+      display: none;
+    }
+    /* Main content (hidden at first) */
+    #mainContent {
+      display: none;
+      overflow-y: auto; /* Allow scrolling once content appears */
+      background-color: white;
+      color: black;
+      padding: 20px;
+      height: 100%;
+    }
+    /* Button styling */
+    .watch-button {
+      display: inline-block;
+      padding: 20px;
+      width: 200px;
+      height: 200px;
+      line-height: 160px; /* Adjust to center the text vertically */
+      text-align: center;
+      border: 4px solid white;
+      color: white;
+      font-size: 18px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      box-sizing: border-box;
+      transition: background-color 0.3s;
+    }
+    .watch-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Phase 1: Click-to-Watch Screen -->
+  <div id="clickScreen" class="screen">
+    <a class="watch-button" id="watchButton">Click to Watch</a>
+  </div>
+
+  <!-- Phase 2: Video Screen -->
+  <div id="videoScreen" class="screen">
+    <video id="introVideo" width="100%" height="100%" playsinline>
+      <source src="your-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Phase 3: Main Website Content -->
+  <div id="mainContent">
+    <h1>Welcome to the Regular Website</h1>
+    <p>Your website content goes here. This is the main site that appears after the video.</p>
+    <!-- Add your additional website content/sections here -->
+  </div>
+  
+  <script>
+    // Grab reference to the elements
+    const watchButton = document.getElementById('watchButton');
+    const clickScreen = document.getElementById('clickScreen');
+    const videoScreen = document.getElementById('videoScreen');
+    const introVideo = document.getElementById('introVideo');
+    const mainContent = document.getElementById('mainContent');
+    
+    // When button is clicked, hide the click screen and show the video
+    watchButton.addEventListener('click', function() {
+      clickScreen.style.display = 'none';
+      videoScreen.style.display = 'flex';
+      introVideo.play();
+    });
+    
+    // When the video ends, hide the video screen and show main content
+    introVideo.addEventListener('ended', function() {
+      videoScreen.style.display = 'none';
+      mainContent.style.display = 'block';
+      document.body.style.overflow = 'auto'; // Enable scrolling for main content
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Exhibit001 Video</title>
   <style>
