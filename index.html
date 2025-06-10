@@ -4,8 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Exhibit001 — A Living Fashion Archive</title>
-
   <link rel="canonical" href="https://exhibit001.com/" />
+
+  <!-- ✅ SEO Meta -->
+  <meta name="description" content="Exhibit001 is a living fashion archive blending fashion, art, and behind-the-scenes process into a timeless visual experience." />
+  <meta name="keywords" content="Exhibit001, fashion archive, behind the scenes, fashion art, experimental clothing, gallery, S!CK, handmade fashion, NYC fashion, alternative style, video fashion archive" />
+  <meta name="author" content="Exhibit001" />
+
+  <!-- ✅ Open Graph -->
+  <meta property="og:title" content="Exhibit001 — A Living Fashion Archive" />
+  <meta property="og:description" content="A curated archive of fashion, art, and behind-the-scenes content. Explore the visual story behind the movement." />
+  <meta property="og:image" content="https://exhibit001.com/cover.jpg" />
+  <meta property="og:url" content="https://exhibit001.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Exhibit001 — A Living Fashion Archive" />
+  <meta name="twitter:description" content="Fashion, art, and process — curated for the curious." />
+  <meta name="twitter:image" content="https://exhibit001.com/cover.jpg" />
+
+  <!-- ✅ Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Exhibit001",
+    "url": "https://exhibit001.com",
+    "description": "A living fashion archive exploring the intersections of handmade design, art, and behind-the-scenes creation.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Exhibit001"
+    },
+    "sameAs": [
+      "https://exhibit001.gallery",
+      "https://exhibit001.video",
+      "https://exhibit001.fashion",
+      "https://exhibit001.work",
+      "https://exhibit001.ws",
+      "https://exhibit001.photos"
+    ]
+  }
+  </script>
+
+  <!-- ✅ Font -->
   <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
 
   <style>
@@ -23,7 +65,6 @@
       overflow: auto;
     }
 
-    /* Fade transition */
     .fade-out {
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
@@ -112,19 +153,22 @@
       align-items: center;
       justify-content: center;
       padding: 40px 20px;
-      background: rgba(0, 0, 0, 0.3); /* subtle dark layer */
+      background: rgba(0, 0, 0, 0.3);
+      text-align: center;
     }
 
     .exhibit-oval {
       background: red;
       color: black;
-      padding: 18px 60px;
-      font-size: 14vw;
+      padding: 24px 80px;
+      font-size: 15vw;
       font-weight: bold;
-      border-radius: 50% / 100%;
+      border-radius: 999px;
       transform: scaleX(1.4);
       text-align: center;
       margin-bottom: 40px;
+      max-width: 90vw;
+      overflow-wrap: break-word;
     }
 
     .button-group {
@@ -133,6 +177,7 @@
       gap: 24px;
       width: 100%;
       max-width: 300px;
+      align-items: center;
     }
 
     .btn {
@@ -140,7 +185,7 @@
       color: #fff;
       font-size: 22px;
       font-weight: bold;
-      padding: 16px;
+      padding: 16px 32px;
       border-radius: 25px;
       text-decoration: none;
       border: 2px solid white;
@@ -180,7 +225,7 @@
     </div>
   </div>
 
-  <!-- Main Website Content -->
+  <!-- Main Site -->
   <div id="mainContent">
     <video autoplay muted loop playsinline id="bg-video">
       <source src="background.mp4" type="video/mp4" />
@@ -195,6 +240,7 @@
     </div>
   </div>
 
+  <!-- JS -->
   <script>
     const watchBtn = document.getElementById("watchButton");
     const clickScreen = document.getElementById("clickScreen");
