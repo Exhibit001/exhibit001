@@ -1,43 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exhibit001 — A Living Fashion Archive</title>
+  
+  <!-- Schema Markup -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Exhibit001 — A Living Fashion Archive",
-  "url": "https://exhibit001.com",
-  "description": "Exhibit001 is a living fashion archive that explores unique intersections of fashion, art, and media.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Exhibit001"
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Exhibit001 — A Living Fashion Archive",
+    "url": "https://exhibit001.com",
+    "description": "Exhibit001 is a living fashion archive that explores unique intersections of fashion, art, and media.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Exhibit001"
+    }
   }
-}
-</script>
+  </script>
 
   <meta name="author" content="S!CK">
-<meta name="keywords" content="fashion, art, living archive, Exhibit001, video, gallery">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Exhibit001 — A Living Fashion Archive</title>
-
+  <meta name="keywords" content="fashion, art, living archive, Exhibit001, video, gallery">
+  
   <!-- ✅ Font -->
   <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    /* ---------- Global Styles ---------- */
+    html, body {
       margin: 0;
-      background-color: black;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* Hide scroll while intro is active */
       font-family: 'Acme', sans-serif;
+    }
+
+    /* ---------- Intro Sequence Styles ---------- */
+    .screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000; /* High to overlay everything */
+    }
+    /* Click-to-Watch Button */
+    .watch-button {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      line-height: 180px; /* Adjust to center the text */
+      text-align: center;
+      border: 4px solid white;
       color: white;
+      font-size: 18px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      box-sizing: border-box;
+      transition: background-color 0.3s;
+    }
+    .watch-button:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+    /* Hide screens when not needed */
+    #videoScreen, #mainContent {
+      display: none;
+    }
+
+    /* ---------- Original Website Styles ---------- */
+    body.main-body {
+      /* Once main website loads, show scrollbars */
+      overflow: auto;
+      background-color: black;
+      color: white;
+      position: relative;
+      padding: 40px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
-      z-index: 1;
-      position: relative;
     }
-
+    /* Background video styled to cover the viewport */
     #bg-video {
       position: fixed;
       top: 0;
@@ -47,7 +95,6 @@
       object-fit: cover;
       z-index: -1;
     }
-
     .wrapper {
       width: 100%;
       max-width: 640px;
@@ -55,7 +102,6 @@
       flex-direction: column;
       align-items: center;
     }
-
     .logo-stack {
       display: flex;
       flex-direction: column;
@@ -63,7 +109,6 @@
       gap: 12px;
       margin-bottom: 40px;
     }
-
     .exhibit-oval {
       background-color: red;
       color: black;
@@ -74,12 +119,10 @@
       transform: scaleX(1.4);
       text-align: center;
     }
-
     .circle-row {
       display: flex;
       justify-content: center;
     }
-
     .circle {
       width: 100px;
       height: 100px;
@@ -94,16 +137,13 @@
       margin-left: -6px;
       margin-right: -6px;
     }
-
     .green { background-color: #4A7400; }
     .brown { background-color: #5A3A00; }
-
     @media (min-width: 600px) {
       .exhibit-oval {
         font-size: 72px;
         padding: 20px 70px;
       }
-
       .circle {
         width: 124px;
         height: 124px;
@@ -112,7 +152,6 @@
         margin-right: -8px;
       }
     }
-
     .grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -120,13 +159,11 @@
       margin-top: 20px;
       width: 100%;
     }
-
     @media (min-width: 600px) {
       .grid {
         grid-template-columns: 1fr 1fr;
       }
     }
-
     .btn {
       background-color: black;
       color: #fdf1c7;
@@ -145,7 +182,6 @@
       text-align: center;
       box-sizing: border-box;
     }
-
     .btn::before {
       content: '';
       position: absolute;
@@ -157,17 +193,14 @@
       border-radius: 15px;
       pointer-events: none;
     }
-
     .btn:hover {
       background-color: #1a1a1a;
     }
-
     @media (min-width: 600px) {
       .btn {
         font-size: 32px;
       }
     }
-
     .exclusive-btn {
       background-color: #111;
       color: #ffcc66;
@@ -175,56 +208,99 @@
       font-style: italic;
       letter-spacing: 1px;
     }
-
     .exclusive-btn::before {
       border-color: #ffcc66;
     }
   </style>
 </head>
 <body>
-
-  <!-- 🔥 VIDEO BACKGROUND -->
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="video.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper">
-    <!-- Exhibit + 001 -->
-    <div class="logo-stack">
-      <div class="exhibit-oval">Exhibit</div>
-      <div class="circle-row">
-        <div class="circle green">0</div>
-        <div class="circle brown">0</div>
-        <div class="circle green">1</div>
-      </div>
-    </div>
-
-    <!-- Button Grid -->
-    <div class="grid">
-      <a href="https://exhibit001.video" class="btn" target="_blank">Video</a>
-      <a href="https://exhibit001.gallery" class="btn" target="_blank">Gallery</a>
-      <a href="https://exhibit001.photos" class="btn" target="_blank">Photo</a>
-      <a href="https://exhibit001.fashion" class="btn" target="_blank">Fashion</a>
-      <a href="https://exhibit001.work" class="btn" target="_blank">Work</a>
-      <a href="https://exhibit001.ws" class="btn exclusive-btn" target="_blank">🔒 Exclusive</a>
-    </div>
+  <!-- Intro: Click-to-Watch Screen -->
+  <div id="clickScreen" class="screen">
+    <a class="watch-button" id="watchButton">Click to Watch</a>
   </div>
 
+  <!-- Intro: Video Screen (replace 'intro-video.mp4' with your video file) -->
+  <div id="videoScreen" class="screen">
+    <video id="introVideo" playsinline width="100%" height="100%" style="object-fit: cover;">
+      <source src="intro-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Main Website Content: Initially hidden -->
+  <div id="mainContent">
+    <!-- Start of your original website content -->
+    <!-- 🔥 VIDEO BACKGROUND -->
+    <video autoplay muted loop playsinline id="bg-video">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <div class="wrapper">
+      <!-- Exhibit + 001 -->
+      <div class="logo-stack">
+        <div class="exhibit-oval">Exhibit</div>
+        <div class="circle-row">
+          <div class="circle green">0</div>
+          <div class="circle brown">0</div>
+          <div class="circle green">1</div>
+        </div>
+      </div>
+
+      <!-- Button Grid -->
+      <div class="grid">
+        <a href="https://exhibit001.video" class="btn" target="_blank">Video</a>
+        <a href="https://exhibit001.gallery" class="btn" target="_blank">Gallery</a>
+        <a href="https://exhibit001.photos" class="btn" target="_blank">Photo</a>
+        <a href="https://exhibit001.fashion" class="btn" target="_blank">Fashion</a>
+        <a href="https://exhibit001.work" class="btn" target="_blank">Work</a>
+        <a href="https://exhibit001.ws" class="btn exclusive-btn" target="_blank">🔒 Exclusive</a>
+      </div>
+    </div>
+    <!-- End of your original website content -->
+  </div>
+
+  <!-- JavaScript to handle the intro sequence -->
+  <script>
+    // Get elements
+    const watchButton = document.getElementById('watchButton');
+    const clickScreen = document.getElementById('clickScreen');
+    const videoScreen = document.getElementById('videoScreen');
+    const introVideo = document.getElementById('introVideo');
+    const mainContent = document.getElementById('mainContent');
+
+    // When "Click to Watch" is pressed:
+    watchButton.addEventListener('click', function() {
+      clickScreen.style.display = 'none';
+      videoScreen.style.display = 'flex';
+      introVideo.play();
+    });
+
+    // When intro video ends, show the main website:
+    introVideo.addEventListener('ended', function() {
+      videoScreen.style.display = 'none';
+      mainContent.style.display = 'block';
+      // Change body class to allow scrolling in main content
+      document.body.classList.add('main-body');
+      document.body.style.overflow = 'auto';
+    });
+  </script>
+  
+  <!-- Additional Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Exhibit001",
+    "url": "https://exhibit001.com",
+    "sameAs": [
+      "https://exhibit001.video",
+      "https://exhibit001.gallery",
+      "https://exhibit001.photos",
+      "https://exhibit001.fashion",
+      "https://exhibit001.work",
+      "https://exhibit001.ws"
+    ]
+  }
+  </script>
 </body>
 </html>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Exhibit001",
-  "url": "https://exhibit001.com",
-  "sameAs": [
-    "https://exhibit001.video",
-    "https://exhibit001.gallery",
-    "https://exhibit001.photos",
-    "https://exhibit001.fashion",
-    "https://exhibit001.work",
-    "https://exhibit001.ws"
-  ]
-}
-</script>
