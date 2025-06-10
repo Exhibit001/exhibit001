@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Exhibit001 — A Living Fashion Archive</title>
   
-  <!-- Schema Markup -->
+  <!-- Schema Markup for Website -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -19,7 +19,7 @@
     }
   }
   </script>
-
+  
   <meta name="author" content="S!CK">
   <meta name="keywords" content="fashion, art, living archive, Exhibit001, video, gallery">
   
@@ -32,10 +32,10 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden; /* Hide scroll while intro is active */
+      overflow: hidden; /* Hide scroll until intro completes */
       font-family: 'Acme', sans-serif;
     }
-
+    
     /* ---------- Intro Sequence Styles ---------- */
     .screen {
       position: fixed;
@@ -47,14 +47,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 2000; /* High to overlay everything */
+      z-index: 2000; /* On top of all content */
     }
     /* Click-to-Watch Button */
     .watch-button {
       display: inline-block;
       width: 200px;
       height: 200px;
-      line-height: 180px; /* Adjust to center the text */
+      line-height: 180px;  /* Adjust for vertical centering */
       text-align: center;
       border: 4px solid white;
       color: white;
@@ -66,26 +66,29 @@
       transition: background-color 0.3s;
     }
     .watch-button:hover {
-      background-color: rgba(255,255,255,0.1);
+      background-color: rgba(255, 255, 255, 0.1);
     }
-    /* Hide screens when not needed */
-    #videoScreen, #mainContent {
+    
+    /* Hide the intro screens and mainContent initially */
+    #videoScreen,
+    #mainContent {
       display: none;
     }
-
-    /* ---------- Original Website Styles ---------- */
+    
+    /* ---------- Main Website Styles ---------- */
     body.main-body {
-      /* Once main website loads, show scrollbars */
+      /* Enable scrolling when main content is visible */
       overflow: auto;
       background-color: black;
       color: white;
-      position: relative;
       padding: 40px 20px;
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    /* Background video styled to cover the viewport */
+    
+    /* Background video styling */
     #bg-video {
       position: fixed;
       top: 0;
@@ -95,6 +98,7 @@
       object-fit: cover;
       z-index: -1;
     }
+    
     .wrapper {
       width: 100%;
       max-width: 640px;
@@ -102,6 +106,7 @@
       flex-direction: column;
       align-items: center;
     }
+    
     .logo-stack {
       display: flex;
       flex-direction: column;
@@ -109,6 +114,7 @@
       gap: 12px;
       margin-bottom: 40px;
     }
+    
     .exhibit-oval {
       background-color: red;
       color: black;
@@ -119,10 +125,12 @@
       transform: scaleX(1.4);
       text-align: center;
     }
+    
     .circle-row {
       display: flex;
       justify-content: center;
     }
+    
     .circle {
       width: 100px;
       height: 100px;
@@ -134,11 +142,16 @@
       justify-content: center;
       color: black;
       border: 4px solid black;
-      margin-left: -6px;
-      margin-right: -6px;
+      margin: 0 -6px;
     }
-    .green { background-color: #4A7400; }
-    .brown { background-color: #5A3A00; }
+    
+    .green {
+      background-color: #4A7400;
+    }
+    .brown {
+      background-color: #5A3A00;
+    }
+    
     @media (min-width: 600px) {
       .exhibit-oval {
         font-size: 72px;
@@ -148,10 +161,10 @@
         width: 124px;
         height: 124px;
         font-size: 64px;
-        margin-left: -8px;
-        margin-right: -8px;
+        margin: 0 -8px;
       }
     }
+    
     .grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -164,6 +177,7 @@
         grid-template-columns: 1fr 1fr;
       }
     }
+    
     .btn {
       background-color: black;
       color: #fdf1c7;
@@ -182,8 +196,9 @@
       text-align: center;
       box-sizing: border-box;
     }
+    
     .btn::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 10px;
       left: 10px;
@@ -193,14 +208,17 @@
       border-radius: 15px;
       pointer-events: none;
     }
+    
     .btn:hover {
       background-color: #1a1a1a;
     }
+    
     @media (min-width: 600px) {
       .btn {
         font-size: 32px;
       }
     }
+    
     .exclusive-btn {
       background-color: #111;
       color: #ffcc66;
@@ -208,35 +226,39 @@
       font-style: italic;
       letter-spacing: 1px;
     }
+    
     .exclusive-btn::before {
       border-color: #ffcc66;
     }
   </style>
 </head>
 <body>
-  <!-- Intro: Click-to-Watch Screen -->
-  <div id="clickScreen" class="screen">
-    <a class="watch-button" id="watchButton">Click to Watch</a>
-  </div>
 
-  <!-- Intro: Video Screen (replace 'intro-video.mp4' with your video file) -->
+  <!-- ========== Intro Sequence ========== -->
+  <!-- Click-to-Watch Screen -->
+  <div id="clickScreen" class="screen">
+    <a href="#" class="watch-button" id="watchButton">Click to Watch</a>
+  </div>
+  
+  <!-- (Optional) Video Screen: If you have an intro video instead of a static overlay, un-comment and use this -->
+  <!--
   <div id="videoScreen" class="screen">
     <video id="introVideo" playsinline width="100%" height="100%" style="object-fit: cover;">
       <source src="intro-video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
+  -->
 
-  <!-- Main Website Content: Initially hidden -->
+  <!-- ========== Main Website Content ========== -->
   <div id="mainContent">
-    <!-- Start of your original website content -->
-    <!-- 🔥 VIDEO BACKGROUND -->
+    <!-- Background Video -->
     <video autoplay muted loop playsinline id="bg-video">
       <source src="video.mp4" type="video/mp4">
     </video>
-
+  
     <div class="wrapper">
-      <!-- Exhibit + 001 -->
+      <!-- Exhibit Logo and Numbers -->
       <div class="logo-stack">
         <div class="exhibit-oval">Exhibit</div>
         <div class="circle-row">
@@ -245,7 +267,7 @@
           <div class="circle green">1</div>
         </div>
       </div>
-
+  
       <!-- Button Grid -->
       <div class="grid">
         <a href="https://exhibit001.video" class="btn" target="_blank">Video</a>
@@ -256,36 +278,48 @@
         <a href="https://exhibit001.ws" class="btn exclusive-btn" target="_blank">🔒 Exclusive</a>
       </div>
     </div>
-    <!-- End of your original website content -->
   </div>
-
-  <!-- JavaScript to handle the intro sequence -->
+  
+  <!-- ========== JavaScript for Intro Sequence ========== -->
   <script>
-    // Get elements
-    const watchButton = document.getElementById('watchButton');
-    const clickScreen = document.getElementById('clickScreen');
-    const videoScreen = document.getElementById('videoScreen');
-    const introVideo = document.getElementById('introVideo');
-    const mainContent = document.getElementById('mainContent');
-
-    // When "Click to Watch" is pressed:
-    watchButton.addEventListener('click', function() {
-      clickScreen.style.display = 'none';
-      videoScreen.style.display = 'flex';
-      introVideo.play();
+    // Reference elements
+    const watchButton = document.getElementById("watchButton");
+    const clickScreen = document.getElementById("clickScreen");
+    // If using a video intro, uncomment the next lines:
+    // const videoScreen = document.getElementById("videoScreen");
+    // const introVideo = document.getElementById("introVideo");
+    const mainContent = document.getElementById("mainContent");
+    
+    // When the "Click to Watch" button is pressed:
+    watchButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      // Hide the click screen overlay
+      clickScreen.style.display = "none";
+      
+      // If you have an intro video, you can show it instead:
+      // videoScreen.style.display = "flex";
+      // introVideo.play();
+      
+      // For simplicity here, we directly reveal the main website:
+      mainContent.style.display = "block";
+      
+      // Allow scrolling and apply main website styling
+      document.body.classList.add("main-body");
+      document.body.style.overflow = "auto";
     });
-
-    // When intro video ends, show the main website:
-    introVideo.addEventListener('ended', function() {
-      videoScreen.style.display = 'none';
-      mainContent.style.display = 'block';
-      // Change body class to allow scrolling in main content
-      document.body.classList.add('main-body');
-      document.body.style.overflow = 'auto';
+    
+    // If using an intro video, listen for its "ended" event:
+    /*
+    introVideo.addEventListener("ended", () => {
+      videoScreen.style.display = "none";
+      mainContent.style.display = "block";
+      document.body.classList.add("main-body");
+      document.body.style.overflow = "auto";
     });
+    */
   </script>
   
-  <!-- Additional Schema Markup -->
+  <!-- Additional Schema Markup for Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
