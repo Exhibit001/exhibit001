@@ -1,53 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Main Page -->
   <url>
     <loc>https://exhibit001.com/</loc>
     <lastmod>2025-06-13</lastmod>
     <priority>1.00</priority>
   </url>
-
-  <!-- Subpages -->
   <url>
     <loc>https://exhibit001.com/gallery</loc>
     <lastmod>2025-06-13</lastmod>
     <priority>0.80</priority>
   </url>
-
   <url>
     <loc>https://exhibit001.com/behind</loc>
     <lastmod>2025-06-13</lastmod>
     <priority>0.80</priority>
-  </url>
-
-  <!-- Subdomains (Content Hubs) -->
-  <url>
-    <loc>https://exhibit001.it.com/</loc>
-    <lastmod>2025-06-13</lastmod>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://exhibit001.video/</loc>
-    <lastmod>2025-06-13</lastmod>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://exhibit001.fashion/</loc>
-    <lastmod>2025-06-13</lastmod>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://exhibit001.work/</loc>
-    <lastmod>2025-06-13</lastmod>
-    <priority>0.70</priority>
-  </url>
-
-  <url>
-    <loc>https://exhibit001.photos/</loc>
-    <lastmod>2025-06-13</lastmod>
-    <priority>0.70</priority>
   </url>
 </urlset>
