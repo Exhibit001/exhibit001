@@ -1,187 +1,312 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  background: black;
-  font-family: 'Acme', sans-serif;
-  overflow: hidden;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exhibit001 — A Living Fashion Archive</title>
+  <link rel="canonical" href="https://exhibit001.com/" />
 
-body.show-main {
-  overflow: auto;
-}
+  <!-- SEO Meta -->
+  <meta name="description" content="Exhibit001 is a living fashion archive blending fashion, art, and behind-the-scenes process into a timeless visual experience." />
+  <meta name="keywords" content="Exhibit001, fashion archive, behind the scenes, fashion art, experimental clothing, gallery, S!CK, handmade fashion, NYC fashion, alternative style, video fashion archive" />
+  <meta name="author" content="Exhibit001" />
 
-.fade-out {
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  pointer-events: none;
-}
+  <!-- Open Graph -->
+  <meta property="og:title" content="Exhibit001 — A Living Fashion Archive" />
+  <meta property="og:description" content="A curated archive of fashion, art, and behind-the-scenes content. Explore the visual story behind the movement." />
+  <meta property="og:image" content="https://exhibit001.com/cover.jpg" />
+  <meta property="og:url" content="https://exhibit001.com" />
+  <meta property="og:type" content="website" />
 
-.screen, #videoScreen, #mainContent {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-}
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Exhibit001 — A Living Fashion Archive" />
+  <meta name="twitter:description" content="A curated archive of fashion, art, and behind-the-scenes content. Explore the visual story behind the movement." />
+  <meta name="twitter:image" content="https://exhibit001.com/cover.jpg" />
 
-.screen {
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Exhibit001",
+    "url": "https://exhibit001.com",
+    "description": "A living fashion archive exploring the intersections of handmade design, art, and behind-the-scenes creation.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Exhibit001"
+    },
+    "sameAs": [
+      "https://exhibit001.gallery",
+      "https://exhibit001.video",
+      "https://exhibit001.fashion",
+      "https://exhibit001.work",
+      "https://exhibit001.ws",
+      "https://exhibit001.photos"
+    ]
+  }
+  </script>
 
-.watch-button {
-  display: inline-block;
-  width: 200px;
-  height: 200px;
-  border: 2px solid white;
-  color: white;
-  font-size: 16px;
-  text-align: center;
-  line-height: 200px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: background 0.3s;
-}
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
 
-.watch-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
+  <!-- Styles -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background: black;
+      font-family: 'Acme', sans-serif;
+      overflow: hidden;
+    }
 
-#videoScreen {
-  display: none;
-  z-index: 9998;
-  align-items: center;
-  justify-content: center;
-  background: black;
-}
+    body.show-main {
+      overflow: auto;
+    }
 
-#introWrapper {
-  width: 90vw;
-  max-width: 540px;
-  border: 2px solid white;
-  aspect-ratio: 9/16;
-  position: relative;
-}
+    .fade-out {
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      pointer-events: none;
+    }
 
-#introVideo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 4px;
-}
+    .screen, #videoScreen, #mainContent {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+    }
 
-#mainContent {
-  display: none;
-  z-index: 1;
-  background: transparent;
-}
+    .screen {
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-#bg-video {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
+    .watch-button {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      border: 2px solid white;
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      line-height: 200px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
 
-.overlay {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  background: rgba(0, 0, 0, 0.3);
-  text-align: center;
-  box-sizing: border-box;
-}
+    .watch-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
 
-.logo-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 50px;
-  width: 100%;
-}
+    #videoScreen {
+      display: none;
+      z-index: 9998;
+      align-items: center;
+      justify-content: center;
+      background: black;
+    }
 
-.exhibit-oval {
-  background-color: red;
-  color: black;
-  padding: 18px 60px;
-  font-size: 13vw;
-  font-weight: bold;
-  border-radius: 50% / 100%;
-  transform: scaleX(1.4);
-  text-align: center;
-}
+    #introWrapper {
+      width: 90vw;
+      max-width: 540px;
+      border: 2px solid white;
+      aspect-ratio: 9/16;
+      position: relative;
+    }
 
-.circle-row {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
+    #introVideo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 4px;
+    }
 
-.circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  font-size: 9vw;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  background-color: white;
-  border: 4px solid black;
-  margin: 0 -6px;
-}
+    #mainContent {
+      display: none;
+      z-index: 1;
+      background: transparent;
+    }
 
-.button-group {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  max-width: 300px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+    #bg-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
 
-.btn {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  font-size: 22px;
-  font-weight: bold;
-  padding: 16px 32px;
-  border-radius: 25px;
-  text-decoration: none;
-  border: 2px solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-  transition: background-color 0.3s, transform 0.3s;
-}
+    .overlay {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      background: rgba(0, 0, 0, 0.3);
+      text-align: center;
+      box-sizing: border-box;
+    }
 
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: scale(1.03);
-}
+    .logo-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 40px;
+      box-sizing: border-box;
+    }
 
-@media (min-width: 600px) {
-  .exhibit-oval { font-size: 72px; }
-  .circle { width: 124px; height: 124px; font-size: 64px; margin: 0 -8px; }
-  .btn { font-size: 26px; }
-}
+    .exhibit-oval {
+      background-color: red;
+      color: black;
+      padding: 18px 60px;
+      font-size: 13vw;
+      font-weight: bold;
+      border-radius: 50% / 100%;
+      transform: scaleX(1.4);
+      text-align: center;
+    }
+
+    .circle-row {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      font-size: 9vw;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      background-color: white;
+      border: 4px solid black;
+      margin: 0 -6px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+      max-width: 300px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .btn {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 16px 32px;
+      border-radius: 25px;
+      text-decoration: none;
+      border: 2px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: scale(1.03);
+    }
+
+    @media (min-width: 600px) {
+      .exhibit-oval { font-size: 72px; }
+      .circle { width: 124px; height: 124px; font-size: 64px; margin: 0 -8px; }
+      .btn { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Click to Watch -->
+  <div id="clickScreen" class="screen">
+    <div class="watch-button" id="watchButton">Click to Watch</div>
+  </div>
+
+  <!-- Intro Video -->
+  <div id="videoScreen" class="screen">
+    <div id="introWrapper">
+      <video id="introVideo" playsinline autoplay muted>
+        <source src="intro.mp4" type="video/mp4" />
+        Your browser does not support this video.
+      </video>
+    </div>
+  </div>
+
+  <!-- Main Website -->
+  <div id="mainContent">
+    <video autoplay muted loop playsinline id="bg-video">
+      <source src="background.mp4" type="video/mp4" />
+    </video>
+
+    <div class="overlay">
+      <div class="logo-stack">
+        <div class="exhibit-oval">Exhibit</div>
+        <div class="circle-row">
+          <div class="circle">0</div>
+          <div class="circle">0</div>
+          <div class="circle">1</div>
+        </div>
+      </div>
+      <div class="button-group">
+        <a href="https://exhibit001.gallery" class="btn" target="_blank" rel="noopener noreferrer">GALLERY</a>
+        <a href="https://exhibit001.video" class="btn" target="_blank" rel="noopener noreferrer">BEHIND THE SCENES</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const watchBtn = document.getElementById("watchButton");
+    const clickScreen = document.getElementById("clickScreen");
+    const videoScreen = document.getElementById("videoScreen");
+    const introVideo = document.getElementById("introVideo");
+    const mainContent = document.getElementById("mainContent");
+
+    watchBtn.addEventListener("click", () => {
+      clickScreen.classList.add("fade-out");
+      setTimeout(() => {
+        clickScreen.style.display = "none";
+        videoScreen.style.display = "flex";
+        introVideo.play();
+      }, 1000);
+    });
+
+    introVideo.addEventListener("ended", () => {
+      videoScreen.classList.add("fade-out");
+      setTimeout(() => {
+        videoScreen.style.display = "none";
+        mainContent.style.display = "block";
+        document.body.classList.add("show-main");
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
