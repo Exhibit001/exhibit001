@@ -2,17 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://exhibit001.com/</loc>
-    <lastmod>2025-06-13</lastmod>
+    <lastmod>2025-06-15</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://exhibit001.com/gallery</loc>
-    <lastmod>2025-06-13</lastmod>
+    <loc>https://exhibit001.gallery/</loc>
+    <lastmod>2025-06-15</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://exhibit001.it.com/</loc>
+    <lastmod>2025-06-15</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://exhibit001.video/</loc>
+    <lastmod>2025-06-15</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://exhibit001.com/behind</loc>
-    <lastmod>2025-06-13</lastmod>
+    <loc>https://exhibit001.photos/</loc>
+    <lastmod>2025-06-15</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://exhibit001.work/</loc>
+    <lastmod>2025-06-15</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://exhibit001.fashion/</loc>
+    <lastmod>2025-06-15</lastmod>
     <priority>0.80</priority>
   </url>
 </urlset>
